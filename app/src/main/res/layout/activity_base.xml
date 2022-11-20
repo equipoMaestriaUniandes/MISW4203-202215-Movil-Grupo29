@@ -84,13 +84,13 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView2"
-            android:name="com.example.misw4203_202215_movil_grupo29.ui.AlbumFragment"
+            android:name="com.example.misw4203_202215_movil_grupo29.ui.AlbumListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center|top"
             android:addStatesFromChildren="false"
             android:paddingTop="30dp"
-            tools:layout="@layout/album_fragment" />
+            tools:layout="@layout/view_album_cover" />
 
     </androidx.cardview.widget.CardView>
 
