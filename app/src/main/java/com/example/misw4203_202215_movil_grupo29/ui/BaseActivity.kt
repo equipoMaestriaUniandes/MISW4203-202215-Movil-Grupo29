@@ -6,7 +6,10 @@ import android.util.Log
 import android.view.MotionEvent
 import androidx.core.view.MotionEventCompat
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
 import com.example.misw4203_202215_movil_grupo29.R
+import com.example.misw4203_202215_movil_grupo29.databinding.ActivityBaseBinding
+import com.example.misw4203_202215_movil_grupo29.databinding.ActivityMainBinding
 
 class BaseActivity : AppCompatActivity() {
     private var startX = 0f
@@ -15,7 +18,19 @@ class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
+        val binding = ActivityBaseBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnArtistas.setOnClickListener {
+            binding.pageTitle.text = "Artist"
+            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_to_artistListFragment)
+        }
+
+        binding.btnAlbumes.setOnClickListener {
+            binding.pageTitle.text = "Album"
+            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_artistListFragment_to_albumListFragment)
+        }
+
     }
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val action: Int = MotionEventCompat.getActionMasked(event)

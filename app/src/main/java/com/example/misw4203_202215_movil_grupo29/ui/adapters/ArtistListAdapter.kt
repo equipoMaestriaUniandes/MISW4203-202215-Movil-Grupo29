@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.misw4203_202215_movil_grupo29.databinding.AlbumListItemBinding
-import com.example.misw4203_202215_movil_grupo29.models.Album
+import com.example.misw4203_202215_movil_grupo29.databinding.ArtistListItemBinding
+import com.example.misw4203_202215_movil_grupo29.models.Band
 
-class AlbumListAdapter(): RecyclerView.Adapter<AlbumListAdapter.ViewHolder>() {
+class ArtistListAdapter(): RecyclerView.Adapter<ArtistListAdapter.ViewHolder>() {
 
-    var albums :List<Album> = emptyList()
+    var bands :List<Band> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -17,7 +17,7 @@ class AlbumListAdapter(): RecyclerView.Adapter<AlbumListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //Crea una nueva vista
-        val binding = AlbumListItemBinding.inflate( LayoutInflater
+        val binding = ArtistListItemBinding.inflate( LayoutInflater
             .from(parent.context),
             parent,
             false)
@@ -28,21 +28,21 @@ class AlbumListAdapter(): RecyclerView.Adapter<AlbumListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //Actualiza la vista
 
-        holder.bind(albums[position])
+        holder.bind(bands[position])
     }
 
     override fun getItemCount(): Int {
         //DEvuelve el numero de elementos del adapter
-        return albums.size
+        return bands.size
     }
 
-    class ViewHolder(private val binding: AlbumListItemBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(album:Album){
-            binding.albumTitle.text = album.name
+    class ViewHolder(private val binding: ArtistListItemBinding):RecyclerView.ViewHolder(binding.root){
+        fun bind(album:Band){
+            binding.artistTitle.text = album.name
             Glide
                 .with(binding.root.context)
-                .load(album.cover)
-                .into(binding.cover)
+                .load(album.image)
+                .into(binding.image)
         }
 
     }
