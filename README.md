@@ -10,7 +10,7 @@ Repo para el proyecto de ingenieria software moviles
   
   La versión se encuentra liberada con el tag Sprint 2 o en la rama Main
   
-3 - Realizar la instalación de Android Studio en su sitio oficial [sitio](https://developer.android.com/studio?hl=es-419&gclid=Cj0KCQiAveebBhD_ARIsAFaAvrFGamSYUmdcu4ooYG_uqQQHR6W91F0JU59uqgoWB8_1EJ5bIoVlbQEaAoI6EALw_wcB&gclsrc=aw.ds)
+3 - Realizar la instalación de Android Studio en su [sitio](https://developer.android.com/studio?hl=es-419&gclid=Cj0KCQiAveebBhD_ARIsAFaAvrFGamSYUmdcu4ooYG_uqQQHR6W91F0JU59uqgoWB8_1EJ5bIoVlbQEaAoI6EALw_wcB&gclsrc=aw.ds) oficial
 
 4 - Abrir la carpeta que contiene el repositorio clonado de git 
 
