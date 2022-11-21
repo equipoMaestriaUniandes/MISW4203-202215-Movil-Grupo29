@@ -34,6 +34,33 @@
             app:srcCompat="@drawable/blnk_square" />
 
         <LinearLayout
+            android:id="@+id/button_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btn_coleccionistas"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="#F3E7C2" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btn_albumes"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btn_artistas"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/title_panel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,14 +110,17 @@
         app:cardUseCompatPadding="false">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView2"
-            android:name="com.example.misw4203_202215_movil_grupo29.ui.AlbumListFragment"
+            android:id="@+id/fragmentContainerView"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center|top"
             android:addStatesFromChildren="false"
             android:paddingTop="30dp"
-            tools:layout="@layout/view_album_cover" />
+            tools:layout="@layout/artist_list_item"
+
+            app:defaultNavHost="true"
+            app:navGraph = "@navigation/nav_graph"/>
 
     </androidx.cardview.widget.CardView>
 

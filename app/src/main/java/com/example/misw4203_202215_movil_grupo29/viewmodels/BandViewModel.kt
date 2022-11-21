@@ -2,20 +2,18 @@ package com.example.misw4203_202215_movil_grupo29.viewmodels
 
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.misw4203_202215_movil_grupo29.models.Comment
-import com.example.misw4203_202215_movil_grupo29.network.NetworkServiceAdapter
-import com.example.misw4203_202215_movil_grupo29.repositories.CommentsRepository
+import com.example.misw4203_202215_movil_grupo29.models.Band
+import com.example.misw4203_202215_movil_grupo29.repositories.BandRepository
 
-class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
+class BandViewModel (application:Application) :  AndroidViewModel(application) {
 
-    private val commentsRepository = CommentsRepository(application)
+    private val bandsRepository = BandRepository(application)
 
-    private val _comments = MutableLiveData<List<Comment>>()
+    private val _bands = MutableLiveData<List<Band>>()
 
-    val comments: LiveData<List<Comment>>
-        get() = _comments
+    val bands: LiveData<List<Band>>
+        get() = _bands
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -27,19 +25,16 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    val id:Int = albumId
-
     init {
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
-        commentsRepository.refreshData(id, {
-            _comments.postValue(it)
+        bandsRepository.refreshData({
+            _bands.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
-            Log.d("Error", it.toString())
             _eventNetworkError.value = true
         })
     }
@@ -48,11 +43,11 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
+    class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CommentViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(BandViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CommentViewModel(app, albumId) as T
+                return BandViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
