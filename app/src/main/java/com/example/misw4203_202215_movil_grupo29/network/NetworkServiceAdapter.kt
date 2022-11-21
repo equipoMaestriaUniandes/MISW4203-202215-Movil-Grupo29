@@ -82,8 +82,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-
-    fun getComments(albumId:Int, onComplete:(resp:List<Comment>)->Unit, onError: (error:VolleyError)->Unit) {
+    suspend fun getComments(albumId:Int) = suspendCoroutine<List<Comment>>{ cont->
         requestQueue.add(getRequest("albums/$albumId/comments",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -94,10 +93,10 @@ class NetworkServiceAdapter constructor(context: Context) {
                     Log.d("Response", item.toString())
                     list.add(i, Comment(albumId = albumId, rating = item.getInt("rating").toString(), description = item.getString("description")))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 
