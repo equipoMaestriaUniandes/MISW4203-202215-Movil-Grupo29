@@ -5,6 +5,9 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.misw4203_202215_movil_grupo29.models.Band
 import com.example.misw4203_202215_movil_grupo29.repositories.BandRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BandViewModel (application:Application) :  AndroidViewModel(application) {
 
@@ -30,13 +33,19 @@ class BandViewModel (application:Application) :  AndroidViewModel(application) {
     }
 
     private fun refreshDataFromNetwork() {
-        bandsRepository.refreshData({
-            _bands.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch (Dispatchers.Default){
+                withContext(Dispatchers.IO){
+                    var data = bandsRepository.refreshData()
+                    _bands.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun onNetworkErrorShown() {

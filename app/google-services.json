@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "417518207755",
+    "project_id": "misw4203-202215-movil-grupo29",
+    "storage_bucket": "misw4203-202215-movil-grupo29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417518207755:android:a368a2e8788cd1cffc980e",
+        "android_client_info": {
+          "package_name": "com.example.misw4203_202215_movil_grupo29"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417518207755-54jcsruonj4tbejjv1t68fv23kb3telb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6-L2ACPOLtluJYUcPiZ7mFEO8Q8paJQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417518207755-54jcsruonj4tbejjv1t68fv23kb3telb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,11 +24,19 @@ class BaseActivity : AppCompatActivity() {
         binding.btnArtistas.setOnClickListener {
             binding.pageTitle.text = "Artist"
             this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_to_artistListFragment)
+            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_artistListFragment_self)
         }
 
         binding.btnAlbumes.setOnClickListener {
             binding.pageTitle.text = "Album"
             this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_artistListFragment_to_albumListFragment)
+            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_self)
+        }
+
+        binding.btnColeccionistas.setOnClickListener {
+            binding.pageTitle.text = "Collector"
+            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_to_collectorListFragment)
+            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_collectorListFragment_self)
         }
 
     }
