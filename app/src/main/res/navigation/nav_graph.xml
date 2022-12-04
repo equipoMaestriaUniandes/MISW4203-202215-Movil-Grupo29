@@ -75,6 +75,11 @@
         tools:layout="@layout/artist_item_fragment" >
         <argument
             android:name="bandObj"
-            app:argType="com.example.misw4203_202215_movil_grupo29.models.Band" />
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Band"
+            app:nullable="true"/>
+        <argument
+            android:name="musicianObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Musicians"
+            app:nullable="true"/>
     </fragment>
 </navigation>

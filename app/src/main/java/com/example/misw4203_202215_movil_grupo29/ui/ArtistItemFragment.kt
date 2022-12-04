@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.ArtistItemFragmentBinding
 import com.example.misw4203_202215_movil_grupo29.models.Band
+import com.example.misw4203_202215_movil_grupo29.models.Musicians
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.activity_base.view.*
 import java.time.OffsetDateTime
@@ -23,6 +24,7 @@ import java.util.*
 
 class ArtistItemFragment : Fragment() {
     private var bandObj: Band? = null
+    private var musicianObj: Musicians? = null
     private var _binding: ArtistItemFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -30,6 +32,7 @@ class ArtistItemFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             bandObj = it.get(BAND_OBJ_BUNDLE) as Band?
+            musicianObj = it.get(MUSICIAN_OBJ_BUNDLE) as Musicians?
         }
     }
 
@@ -45,19 +48,35 @@ class ArtistItemFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Glide.with(this)
-            .load(bandObj?.image?.toUri()?.buildUpon()?.scheme("https")?.build())
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.loading_animation)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .error(R.drawable.ic_broken_image))
-            .into(binding.artistImage)
-        var myDate = OffsetDateTime.parse(bandObj?.creationDate).format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH))
-        _binding!!.artistName.text = bandObj?.name
-        _binding!!.artistDate.text = myDate.toString()
-        _binding!!.artistDescription.text = bandObj?.description
-
+        if (bandObj!=null) {
+            Glide.with(this)
+                .load(bandObj?.image?.toUri()?.buildUpon()?.scheme("https")?.build())
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.loading_animation)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .error(R.drawable.ic_broken_image)
+                )
+                .into(binding.artistImage)
+            _binding!!.artistName.text = bandObj?.name
+            _binding!!.artistDate.text = OffsetDateTime.parse(bandObj?.creationDate)
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH))?.toString()
+            _binding!!.artistDescription.text = bandObj?.description
+        }else{
+            Glide.with(this)
+                .load(musicianObj?.image?.toUri()?.buildUpon()?.scheme("https")?.build())
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.loading_animation)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .error(R.drawable.ic_broken_image)
+                )
+                .into(binding.artistImage)
+            _binding!!.artistName.text = musicianObj?.name
+            _binding!!.artistDate.text = OffsetDateTime.parse(musicianObj?.birthDate)
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH))?.toString()
+            _binding!!.artistDescription.text = musicianObj?.description
+        }
         if (activity !=null && activity is BaseActivity) {
             (activity as BaseActivity).inActiveBtn()
         }
@@ -74,11 +93,13 @@ class ArtistItemFragment : Fragment() {
 
     companion object {
         private const val BAND_OBJ_BUNDLE = "bandObj"
+        private const val MUSICIAN_OBJ_BUNDLE = "musicianObj"
         @JvmStatic
-        fun newInstance(bandObj: Band) =
+        fun newInstance(bandObj: Band?, musicianObj:Musicians?) =
             ArtistItemFragment().apply {
                 arguments = Bundle().apply {
                     putString(BAND_OBJ_BUNDLE, bandObj.toString())
+                    putString(MUSICIAN_OBJ_BUNDLE, musicianObj.toString())
                 }
             }
     }

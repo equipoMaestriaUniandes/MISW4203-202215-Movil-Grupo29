@@ -36,8 +36,7 @@ class ArtistListAdapter(): RecyclerView.Adapter<ArtistListAdapter.ViewHolder>() 
         holder.bind(bands[position])
 
         holder.binding.root.setOnClickListener {
-            val action = ArtistListFragmentDirections.actionArtistListFragmentToArtistItemFragment(bands[position])
-            // Navigate using that action
+            val action = ArtistListFragmentDirections.actionArtistListFragmentToArtistItemFragment(bands[position],null)
             holder.binding.root.findNavController().navigate(action)
         }
     }
