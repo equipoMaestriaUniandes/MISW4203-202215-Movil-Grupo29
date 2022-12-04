@@ -19,9 +19,6 @@
         <action
             android:id="@+id/action_albumListFragment_to_albumItemFragment"
             app:destination="@id/albumItemFragment" />
-        <action
-            android:id="@+id/action_albumListFragment_self"
-            app:destination="@id/albumListFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistListFragment"
@@ -31,9 +28,6 @@
         <action
             android:id="@+id/action_artistListFragment_to_albumListFragment"
             app:destination="@id/albumListFragment" />
-        <action
-            android:id="@+id/action_artistListFragment_self"
-            app:destination="@id/artistListFragment" />
         <action
             android:id="@+id/action_artistListFragment_to_collectorListFragment"
             app:destination="@id/collectorListFragment" />
@@ -47,8 +41,8 @@
             android:id="@+id/action_collectorListFragment_to_albumListFragment"
             app:destination="@id/albumListFragment" />
         <action
-            android:id="@+id/action_collectorListFragment_self"
-            app:destination="@id/collectorListFragment" />
+            android:id="@+id/action_collectorListFragment_to_artistListFragment"
+            app:destination="@id/artistListFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumItemFragment"
