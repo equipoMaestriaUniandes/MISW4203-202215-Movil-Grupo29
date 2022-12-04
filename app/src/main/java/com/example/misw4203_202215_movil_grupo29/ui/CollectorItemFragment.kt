@@ -46,11 +46,17 @@ class CollectorItemFragment : Fragment() {
         _binding!!.collectorName.text = collectorObj?.name
         _binding!!.collectorTelephone.text = collectorObj?.telephone
         _binding!!.collectorEmail.text = collectorObj?.email
+        if (activity !=null && activity is BaseActivity) {
+            (activity as BaseActivity).inActiveBtn()
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        if (activity !=null && activity is BaseActivity) {
+            (activity as BaseActivity).activeBtn()
+        }
     }
 
     companion object {

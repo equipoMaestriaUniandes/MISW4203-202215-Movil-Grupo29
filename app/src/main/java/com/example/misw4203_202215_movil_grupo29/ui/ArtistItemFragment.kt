@@ -2,21 +2,24 @@ package com.example.misw4203_202215_movil_grupo29.ui
 
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.ArtistItemFragmentBinding
 import com.example.misw4203_202215_movil_grupo29.models.Band
+import kotlinx.android.synthetic.main.activity_base.*
+import kotlinx.android.synthetic.main.activity_base.view.*
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Locale
+import java.util.*
+
 
 class ArtistItemFragment : Fragment() {
     private var bandObj: Band? = null
@@ -54,11 +57,19 @@ class ArtistItemFragment : Fragment() {
         _binding!!.artistName.text = bandObj?.name
         _binding!!.artistDate.text = myDate.toString()
         _binding!!.artistDescription.text = bandObj?.description
+
+        if (activity !=null && activity is BaseActivity) {
+            (activity as BaseActivity).inActiveBtn()
+        }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        if (activity !=null && activity is BaseActivity) {
+            (activity as BaseActivity).activeBtn()
+        }
     }
 
     companion object {
