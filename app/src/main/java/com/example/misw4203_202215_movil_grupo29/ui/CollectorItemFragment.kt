@@ -1,6 +1,5 @@
 package com.example.misw4203_202215_movil_grupo29.ui
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,21 +12,22 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.misw4203_202215_movil_grupo29.R
-import com.example.misw4203_202215_movil_grupo29.databinding.AlbumItemFragmentBinding
+import com.example.misw4203_202215_movil_grupo29.databinding.CollectorItemFragmentBinding
 import com.example.misw4203_202215_movil_grupo29.models.Album
+import com.example.misw4203_202215_movil_grupo29.models.Collector
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-class AlbumItemFragment : Fragment() {
-    private var albumObj: Album? = null
-    private var _binding: AlbumItemFragmentBinding? = null
+class CollectorItemFragment : Fragment() {
+    private var collectorObj: Collector? = null
+    private var _binding: CollectorItemFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            albumObj = it.get(ALBUM_OBJ_BUNDLE) as Album?
+            collectorObj = it.get(COLLECTOR_OBJ_BUNDLE) as Collector?
         }
     }
 
@@ -35,7 +35,7 @@ class AlbumItemFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = AlbumItemFragmentBinding.inflate(inflater, container, false)
+        _binding = CollectorItemFragmentBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -43,34 +43,29 @@ class AlbumItemFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Glide.with(this)
-            .load(albumObj?.cover?.toUri()?.buildUpon()?.scheme("https")?.build())
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.loading_animation)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .error(R.drawable.ic_broken_image))
-            .into(binding.cover)
-        var myDate = OffsetDateTime.parse(albumObj?.releaseDate).format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH))
-        _binding!!.albumTitle.text = albumObj?.name
-        _binding!!.albumReleaseDate.text = myDate.toString()
-        _binding!!.albumGenre.text = albumObj?.genre
-        _binding!!.albumRecordLabel.text = albumObj?.recordLabel
-        _binding!!.albumDescription.text = albumObj?.description
+        _binding!!.collectorName.text = collectorObj?.name
+        _binding!!.collectorTelephone.text = collectorObj?.telephone
+        _binding!!.collectorEmail.text = collectorObj?.email
+        if (activity !=null && activity is BaseActivity) {
+            (activity as BaseActivity).inActiveBtn()
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        if (activity !=null && activity is BaseActivity) {
+            (activity as BaseActivity).activeBtn()
+        }
     }
 
     companion object {
-        private const val ALBUM_OBJ_BUNDLE = "albumObj"
+        private const val COLLECTOR_OBJ_BUNDLE = "collectorObj"
         @JvmStatic
-        fun newInstance(albumObj: Album) =
-            AlbumItemFragment().apply {
+        fun newInstance(collectorObj: Collector) =
+            CollectorItemFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ALBUM_OBJ_BUNDLE, albumObj.toString())
+                    putString(COLLECTOR_OBJ_BUNDLE, collectorObj.toString())
                 }
             }
     }

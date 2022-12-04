@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_artistListFragment_to_collectorListFragment"
             app:destination="@id/collectorListFragment" />
+        <action
+            android:id="@+id/action_artistListFragment_to_artistItemFragment"
+            app:destination="@id/artistItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/collectorListFragment"
@@ -43,6 +46,9 @@
         <action
             android:id="@+id/action_collectorListFragment_to_artistListFragment"
             app:destination="@id/artistListFragment" />
+        <action
+            android:id="@+id/action_collectorListFragment_to_collectorItemFragment"
+            app:destination="@id/collectorItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumItemFragment"
@@ -52,5 +58,28 @@
         <argument
             android:name="albumObj"
             app:argType="com.example.misw4203_202215_movil_grupo29.models.Album" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.CollectorItemFragment"
+        android:label="collector_item_fragment"
+        tools:layout="@layout/collector_item_fragment" >
+        <argument
+            android:name="collectorObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Collector" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.ArtistItemFragment"
+        android:label="artist_item_fragment"
+        tools:layout="@layout/artist_item_fragment" >
+        <argument
+            android:name="bandObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Band"
+            app:nullable="true"/>
+        <argument
+            android:name="musicianObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Musicians"
+            app:nullable="true"/>
     </fragment>
 </navigation>

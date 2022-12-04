@@ -1,16 +1,17 @@
 package com.example.misw4203_202215_movil_grupo29.ui
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MotionEventCompat
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.ActivityBaseBinding
-import com.example.misw4203_202215_movil_grupo29.databinding.ActivityMainBinding
+
 
 class BaseActivity : AppCompatActivity() {
     //private var startX = 0f
@@ -91,4 +92,16 @@ class BaseActivity : AppCompatActivity() {
             else -> super.onTouchEvent(event)
         }
     }*/
+
+    fun inActiveBtn(){
+        findViewById<View>(R.id.btn_albumes).isClickable = false
+        findViewById<View>(R.id.btn_artistas).isClickable = false
+        findViewById<View>(R.id.btn_coleccionistas).isClickable = false
+    }
+
+    fun activeBtn(){
+        findViewById<View>(R.id.btn_albumes).isClickable = true
+        findViewById<View>(R.id.btn_artistas).isClickable = true
+        findViewById<View>(R.id.btn_coleccionistas).isClickable = true
+    }
 }

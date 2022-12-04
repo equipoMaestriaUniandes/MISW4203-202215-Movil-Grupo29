@@ -1,6 +1,5 @@
 package com.example.misw4203_202215_movil_grupo29.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.net.toUri
