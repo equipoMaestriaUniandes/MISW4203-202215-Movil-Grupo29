@@ -17,6 +17,9 @@
             android:id="@+id/action_albumListFragment_to_collectorListFragment"
             app:destination="@id/collectorListFragment" />
         <action
+            android:id="@+id/action_albumListFragment_to_albumItemFragment"
+            app:destination="@id/albumItemFragment" />
+        <action
             android:id="@+id/action_albumListFragment_self"
             app:destination="@id/albumListFragment" />
     </fragment>
@@ -46,5 +49,14 @@
         <action
             android:id="@+id/action_collectorListFragment_self"
             app:destination="@id/collectorListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.AlbumItemFragment"
+        android:label="album_item_fragment"
+        tools:layout="@layout/album_item_fragment" >
+        <argument
+            android:name="albumObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Album" />
     </fragment>
 </navigation>

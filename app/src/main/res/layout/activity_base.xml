@@ -83,7 +83,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:fontFamily="@font/ole_regular"
-                android:text="Alubum"
+                android:text="Album"
                 android:textColor="#000000"
                 android:textSize="100dp" />
 
@@ -117,8 +117,7 @@
             android:layout_gravity="center|top"
             android:addStatesFromChildren="false"
             android:paddingTop="30dp"
-            tools:layout="@layout/artist_list_item"
-
+            tools:layout="@layout/album_list_item"
             app:defaultNavHost="true"
             app:navGraph = "@navigation/nav_graph"/>
 
