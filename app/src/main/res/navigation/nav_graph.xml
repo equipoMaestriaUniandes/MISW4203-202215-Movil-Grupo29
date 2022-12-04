@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_artistListFragment_to_collectorListFragment"
             app:destination="@id/collectorListFragment" />
+        <action
+            android:id="@+id/action_artistListFragment_to_artistItemFragment"
+            app:destination="@id/artistItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/collectorListFragment"
@@ -70,5 +73,14 @@
         <argument
             android:name="collectorObj"
             app:argType="com.example.misw4203_202215_movil_grupo29.models.Collector" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.ArtistItemFragment"
+        android:label="artist_item_fragment"
+        tools:layout="@layout/artist_item_fragment" >
+        <argument
+            android:name="bandObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Band" />
     </fragment>
 </navigation>
