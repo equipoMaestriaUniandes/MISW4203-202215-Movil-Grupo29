@@ -1,6 +1,6 @@
 package com.example.misw4203_202215_movil_grupo29.ui
 
-
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -14,9 +14,9 @@ import com.example.misw4203_202215_movil_grupo29.databinding.ActivityBaseBinding
 
 
 class BaseActivity : AppCompatActivity() {
-    private var startX = 0f
-    private var isScrollingRight = false
-    private var isScrollingLeft = false
+    //private var startX = 0f
+    //private var isScrollingRight = false
+    //private var isScrollingLeft = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,25 +24,48 @@ class BaseActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnArtistas.setOnClickListener {
+            if (binding.pageTitle.text == "Collector"){
+                this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_collectorListFragment_to_artistListFragment)
+            }else if  (binding.pageTitle.text == "Album"){
+                this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_to_artistListFragment)
+            }
+            binding.btnArtistas.isClickable = false
+            binding.btnColeccionistas.isClickable = true
+            binding.btnAlbumes.isClickable = true
             binding.pageTitle.text = "Artist"
-            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_to_artistListFragment)
-            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_artistListFragment_self)
         }
 
         binding.btnAlbumes.setOnClickListener {
+
+            if (binding.pageTitle.text == "Collector") {
+                this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_collectorListFragment_to_albumListFragment)
+            }else  if (binding.pageTitle.text == "Artist") {
+                this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_artistListFragment_to_albumListFragment)
+            }
+
+            binding.btnAlbumes.isClickable = false
+            binding.btnArtistas.isClickable = true
+            binding.btnColeccionistas.isClickable = true
             binding.pageTitle.text = "Album"
-            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_artistListFragment_to_albumListFragment)
-            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_self)
+
         }
 
         binding.btnColeccionistas.setOnClickListener {
+
+            if (binding.pageTitle.text == "Album") {
+                this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_to_collectorListFragment)
+            }else  if (binding.pageTitle.text == "Artist") {
+                this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_artistListFragment_to_collectorListFragment)
+            }
+
+            binding.btnColeccionistas.isClickable = false
+            binding.btnArtistas.isClickable = true
+            binding.btnAlbumes.isClickable = true
             binding.pageTitle.text = "Collector"
-            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_albumListFragment_to_collectorListFragment)
-            this.findNavController(R.id.fragmentContainerView).navigate(R.id.action_collectorListFragment_self)
         }
 
     }
-    override fun onTouchEvent(event: MotionEvent): Boolean {
+    /*override fun onTouchEvent(event: MotionEvent): Boolean {
         val action: Int = MotionEventCompat.getActionMasked(event)
         return when (action) {
             MotionEvent.ACTION_MOVE -> {
@@ -68,7 +91,7 @@ class BaseActivity : AppCompatActivity() {
             }
             else -> super.onTouchEvent(event)
         }
-    }
+    }*/
 
     fun inActiveBtn(){
         findViewById<View>(R.id.btn_albumes).isClickable = false
