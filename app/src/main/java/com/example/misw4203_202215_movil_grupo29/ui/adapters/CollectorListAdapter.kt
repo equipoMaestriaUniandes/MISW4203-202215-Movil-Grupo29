@@ -2,14 +2,12 @@ package com.example.misw4203_202215_movil_grupo29.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.net.toUri
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.CollectorListItemBinding
 import com.example.misw4203_202215_movil_grupo29.models.Collector
+import com.example.misw4203_202215_movil_grupo29.ui.CollectorListFragmentDirections
 
 class CollectorListAdapter (): RecyclerView.Adapter<CollectorListAdapter.ViewHolder>() {
 
@@ -32,6 +30,12 @@ class CollectorListAdapter (): RecyclerView.Adapter<CollectorListAdapter.ViewHol
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //Actualiza la vista
         holder.bind(collectors[position])
+
+        holder.binding.root.setOnClickListener {
+            val action = CollectorListFragmentDirections.actionCollectorListFragmentToCollectorItemFragment(collectors[position])
+            // Navigate using that action
+            holder.binding.root.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -39,7 +43,7 @@ class CollectorListAdapter (): RecyclerView.Adapter<CollectorListAdapter.ViewHol
         return collectors.size
     }
 
-    class ViewHolder(private val binding: CollectorListItemBinding): RecyclerView.ViewHolder(binding.root){
+    class ViewHolder(val binding: CollectorListItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(collector: Collector){
             binding.nombre.text = collector.name
             binding.telefono.text = "Telefono: ${collector.telephone}"

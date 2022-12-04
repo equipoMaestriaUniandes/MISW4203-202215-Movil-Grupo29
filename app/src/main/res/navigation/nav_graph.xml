@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_collectorListFragment_self"
             app:destination="@id/collectorListFragment" />
+        <action
+            android:id="@+id/action_collectorListFragment_to_collectorItemFragment"
+            app:destination="@id/collectorItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumItemFragment"
@@ -58,5 +61,14 @@
         <argument
             android:name="albumObj"
             app:argType="com.example.misw4203_202215_movil_grupo29.models.Album" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.CollectorItemFragment"
+        android:label="collector_item_fragment"
+        tools:layout="@layout/collector_item_fragment" >
+        <argument
+            android:name="collectorObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Collector" />
     </fragment>
 </navigation>
