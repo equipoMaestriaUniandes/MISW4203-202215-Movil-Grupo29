@@ -142,6 +142,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+
     suspend fun createTrack(body: JSONObject, albumId:Int) = suspendCoroutine<Track>{ cont->
         requestQueue.add(postRequest("albums/$albumId/tracks", body,
             { response ->
@@ -152,6 +153,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
+
     suspend fun createAlbum(body: JSONObject) = suspendCoroutine<Album>{ cont->
         requestQueue.add(postRequest("albums", body,
             { response ->
