@@ -24,6 +24,7 @@
         app:backgroundTint="#F7D384"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_btn_add_24" />
+        app:srcCompat="@drawable/ic_btn_add_24"
+        android:contentDescription="Botón para ir a la pantalla crear álbumm"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
