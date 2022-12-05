@@ -13,9 +13,10 @@
         android:layout_width="625dp"
         android:layout_height="421dp"
         android:layout_gravity="center"
-        android:layout_marginTop="-200dp"
+        android:layout_marginTop="-230dp"
         app:cardCornerRadius="1000dp"
         tools:ignore="MissingConstraints">
+
 
         <ImageView
             android:id="@+id/background"
@@ -32,6 +33,7 @@
             android:alpha="0.4"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/blnk_square" />
+
 
         <LinearLayout
             android:id="@+id/button_panel"
@@ -66,15 +68,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:orientation="horizontal"
-            android:paddingBottom="50dp">
+            android:paddingBottom="50dp"
+            >
+
 
             <ImageView
                 android:id="@+id/imageView10"
-                android:layout_width="106dp"
+                android:layout_width="96dp"
                 android:layout_height="107dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/icon"
-                tools:ignore="MissingConstraints" />
+                android:layout_marginLeft="30dp"
+                tools:ignore="MissingConstraints"
+                android:layout_marginTop="30dp"/>
 
             <TextView
                 android:id="@+id/page_title"
@@ -85,7 +91,19 @@
                 android:fontFamily="@font/ole_regular"
                 android:text="Album"
                 android:textColor="#000000"
-                android:textSize="100dp" />
+                android:textSize="80dp"
+                android:layout_marginTop="30dp"/>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="70dp"
+                android:clickable="true"
+                app:backgroundTint="#F7D384"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_baseline_keyboard_return_24" />
 
         </LinearLayout>
 

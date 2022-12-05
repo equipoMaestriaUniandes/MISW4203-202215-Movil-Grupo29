@@ -73,4 +73,6 @@ dependencies {
 
     //concat adapter
     implementation "androidx.recyclerview:recyclerview:1.2.0-alpha04"
+
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

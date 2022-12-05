@@ -22,4 +22,17 @@
     <string name="title_comments">Comentarios del álbum</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="genre_array">
+        <item>Salsa</item>
+        <item>Rock</item>
+        <item>Classical</item>
+        <item>Folk</item>
+    </string-array>
+    <string-array name="record_label_array">
+        <item>Sony Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Records</item>
+    </string-array>
 </resources>
