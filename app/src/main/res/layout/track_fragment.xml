@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".TrackFragment">
+    tools:context=".ui.TrackFragment">
 
     <TextView
         android:id="@+id/fragment_title"
@@ -19,7 +19,8 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="40dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:contentDescription="Nueva Canción"/>
 
     <EditText
         android:id="@+id/track_name"
@@ -32,7 +33,8 @@
         android:textColor="#000000"
         android:textColorHighlight="@color/black"
         android:textColorHint="#000000"
-        android:textColorLink="@color/black" />
+        android:textColorLink="@color/black"
+        android:contentDescription="Caja de texto nombre de la canción"/>
 
     <EditText
         android:id="@+id/duration"
@@ -44,7 +46,8 @@
         android:text="Duration (mm:ss)"
         android:textColor="#000000"
         android:textColorHighlight="@color/black"
-        android:textColorHint="#000000" />
+        android:textColorHint="#000000"
+        android:contentDescription="Caja de texto para ingresar duración de la canción"/>
 
     <LinearLayout
         android:id="@+id/btn_panel"
@@ -63,7 +66,8 @@
             android:text="Create"
             android:textAlignment="center"
             android:textColor="#000000"
-            app:chipBackgroundColor="#F6DB98" />
+            app:chipBackgroundColor="#F6DB98"
+            android:contentDescription="Botón crear canción"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/btn_cancelar"
@@ -75,6 +79,7 @@
             android:text="Cancel"
             android:textAlignment="center"
             android:textColor="#000000"
-            app:chipBackgroundColor="#F6DB98" />
+            app:chipBackgroundColor="#F6DB98"
+            android:contentDescription="Botón cancelar creación de canción"/>
     </LinearLayout>
 </LinearLayout>

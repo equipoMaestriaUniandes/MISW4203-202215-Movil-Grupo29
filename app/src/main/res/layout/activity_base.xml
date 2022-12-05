@@ -46,20 +46,23 @@
                 android:layout_width="50dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="#F3E7C2" />
+                android:background="#F3E7C2"
+                android:contentDescription="Botón de menú colecionistas"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/btn_albumes"
                 android:layout_width="50dp"
                 android:layout_height="40dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:contentDescription="Botón de menú álbumes"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/btn_artistas"
                 android:layout_width="50dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:contentDescription="Botón de menú artistas"/>
         </LinearLayout>
 
         <LinearLayout
@@ -103,7 +106,8 @@
                 app:backgroundTint="#F7D384"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_baseline_keyboard_return_24" />
+                app:srcCompat="@drawable/ic_baseline_keyboard_return_24"
+                android:contentDescription="Botón Ir a Atrás"/>
 
         </LinearLayout>
 
