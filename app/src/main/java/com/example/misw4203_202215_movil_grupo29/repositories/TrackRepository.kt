@@ -1,10 +1,8 @@
 package com.example.misw4203_202215_movil_grupo29.repositories
 
 import android.app.Application
-import android.util.Log
 import com.android.volley.VolleyError
 import com.example.misw4203_202215_movil_grupo29.models.Track
-import com.example.misw4203_202215_movil_grupo29.network.CacheManager
 import com.example.misw4203_202215_movil_grupo29.network.NetworkServiceAdapter
 import org.json.JSONObject
 
@@ -17,7 +15,6 @@ class TrackRepository(val application: Application) {
         },
             onError
         )
-
     }
 
     suspend fun createTrack(album: JSONObject, albumId: Int):Track{

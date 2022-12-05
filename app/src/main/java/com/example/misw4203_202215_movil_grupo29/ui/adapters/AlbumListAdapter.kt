@@ -39,14 +39,11 @@ class AlbumListAdapter(): RecyclerView.Adapter<AlbumListAdapter.ViewHolder>() {
         holder.bind(albums[position])
 
         holder.binding.root.setOnClickListener {
-            val action = AlbumListFragmentDirections.actionAlbumListFragmentToAlbumItemFragment(albums[position])
-            // Navigate using that action
-            holder.binding.root.findNavController().navigate(action)
+            holder.binding.root.findNavController().navigate(AlbumListFragmentDirections.actionAlbumListFragmentToAlbumItemFragment(albums[position]))
         }
     }
 
     override fun getItemCount(): Int {
-        //DEvuelve el numero de elementos del adapter
         return albums.size
     }
 
@@ -63,6 +60,5 @@ class AlbumListAdapter(): RecyclerView.Adapter<AlbumListAdapter.ViewHolder>() {
                         .error(R.drawable.ic_broken_image))
                 .into(binding.cover)
         }
-
     }
 }

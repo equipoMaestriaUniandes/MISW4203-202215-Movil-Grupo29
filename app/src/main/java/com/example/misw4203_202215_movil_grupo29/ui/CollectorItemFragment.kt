@@ -7,17 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.net.toUri
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
-import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.CollectorItemFragmentBinding
-import com.example.misw4203_202215_movil_grupo29.models.Album
 import com.example.misw4203_202215_movil_grupo29.models.Collector
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 class CollectorItemFragment : Fragment() {
     private var collectorObj: Collector? = null

@@ -31,8 +31,7 @@ class AlbumListFragment : Fragment() {
         _binding = AlbumListFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.btnAlbumNewShow.setOnClickListener{
-            val action = AlbumListFragmentDirections.actionAlbumListFragmentToAlbumNewItemFragment()
-            binding.root.findNavController().navigate(action)
+            binding.root.findNavController().navigate(AlbumListFragmentDirections.actionAlbumListFragmentToAlbumNewItemFragment())
         }
 
         viewModelAdapter = AlbumListAdapter()

@@ -22,27 +22,22 @@ class ArtistListAdapter(): RecyclerView.Adapter<ArtistListAdapter.ViewHolder>() 
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        //Crea una nueva vista
         val binding = ArtistListItemBinding.inflate( LayoutInflater
             .from(parent.context),
             parent,
             false)
-
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //Actualiza la vista
         holder.bind(bands[position])
 
         holder.binding.root.setOnClickListener {
-            val action = ArtistListFragmentDirections.actionArtistListFragmentToArtistItemFragment(bands[position],null)
-            holder.binding.root.findNavController().navigate(action)
+            holder.binding.root.findNavController().navigate(ArtistListFragmentDirections.actionArtistListFragmentToArtistItemFragment(bands[position],null))
         }
     }
 
     override fun getItemCount(): Int {
-        //DEvuelve el numero de elementos del adapter
         return bands.size
     }
 

@@ -27,20 +27,17 @@ class MusicianListAdapter(): RecyclerView.Adapter<MusicianListAdapter.ViewHolder
             .from(parent.context),
             parent,
             false)
-
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(musicians[position])
         holder.binding.root.setOnClickListener {
-            val action = ArtistListFragmentDirections.actionArtistListFragmentToArtistItemFragment(null,musicians[position])
-            holder.binding.root.findNavController().navigate(action)
+            holder.binding.root.findNavController().navigate(ArtistListFragmentDirections.actionArtistListFragmentToArtistItemFragment(null,musicians[position]))
         }
     }
 
     override fun getItemCount(): Int {
-        //DEvuelve el numero de elementos del adapter
         return musicians.size
     }
 
