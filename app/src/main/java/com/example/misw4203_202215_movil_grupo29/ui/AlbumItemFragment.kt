@@ -2,7 +2,6 @@ package com.example.misw4203_202215_movil_grupo29.ui
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,10 +44,8 @@ class AlbumItemFragment : Fragment() {
     ): View? {
         _binding = AlbumItemFragmentBinding.inflate(inflater, container, false)
         ddTracks = _binding!!.trackDropdown
-        // Inflate the layout for this fragment
         _binding!!.addTrackBtn.setOnClickListener{
-            val action = AlbumItemFragmentDirections.actionAlbumItemFragmentToTrackFragment(albumObj!!)
-            binding.root.findNavController().navigate(action)
+            binding.root.findNavController().navigate(AlbumItemFragmentDirections.actionAlbumItemFragmentToTrackFragment(albumObj!!))
         }
 
         return binding.root
@@ -62,11 +59,9 @@ class AlbumItemFragment : Fragment() {
         activity.actionBar?.title = getString(R.string.title_albums)
         viewModel = ViewModelProvider(this, TrackViewModel.Factory(activity.application)).get(TrackViewModel::class.java)
 
-
         viewModel.refreshDataFromNetwork(albumObj!!.albumId) {
             val trackList = arrayListOf<String>()
             it.forEach {
-                Log.d("TRACK_LIST_TEST", it.name)
                 trackList.add(it.name + " / " + it.duration)
             }
             val adapter = ArrayAdapter(activity.applicationContext,R.layout.track_adapter,trackList)
@@ -85,9 +80,8 @@ class AlbumItemFragment : Fragment() {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .error(R.drawable.ic_broken_image))
             .into(binding.cover)
-        var myDate = OffsetDateTime.parse(albumObj?.releaseDate).format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH))
         _binding!!.albumTitle.text = albumObj?.name
-        _binding!!.albumReleaseDate.text = myDate.toString()
+        _binding!!.albumReleaseDate.text = OffsetDateTime.parse(albumObj?.releaseDate).format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)).toString()
         _binding!!.albumGenre.text = albumObj?.genre
         _binding!!.albumRecordLabel.text = albumObj?.recordLabel
         _binding!!.albumDescription.text = albumObj?.description

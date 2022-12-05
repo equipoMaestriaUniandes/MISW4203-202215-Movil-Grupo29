@@ -10,12 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.AlbumNewItemFragmentBinding
 import com.example.misw4203_202215_movil_grupo29.models.Album
-import com.example.misw4203_202215_movil_grupo29.ui.adapters.AlbumListAdapter
 import com.example.misw4203_202215_movil_grupo29.viewmodels.AlbumViewModel
 import com.google.gson.Gson
 import kotlinx.coroutines.*
@@ -61,7 +58,7 @@ class AlbumNewItemFragment : Fragment() {
             }
         }
         binding.btnAlbumNewItem.setOnClickListener{
-            GlobalScope.launch(Dispatchers.Main){ // launches coroutine in main thread
+            GlobalScope.launch(Dispatchers.Main){
                 save()
             }
         }
@@ -72,7 +69,6 @@ class AlbumNewItemFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
-            "You can only access the viewModel after onActivityCreated()"
         }
         activity.actionBar?.title = getString(R.string.title_albums)
         viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
@@ -98,15 +94,14 @@ class AlbumNewItemFragment : Fragment() {
     }
 
     private suspend fun save(){
-        var newAlbum = Album(0,
+        val newAlbumJson= JSONObject(gson.toJson(Album(0,
             binding.albumNewItemName.text.toString(),
             "https://www.actbus.net/fleetwiki/images/8/84/Noimage.jpg",
             binding.albumNewItemReleaseDate.text.toString(),
             binding.albumNewItemDescription.text.toString(),
             binding.albumNewItemGenre.selectedItem.toString(),
             binding.albumNewItemRecordLabel.selectedItem.toString()
-        )
-        val newAlbumJson= JSONObject(gson.toJson(newAlbum))
+        )))
         newAlbumJson.remove("albumId")
         val value = GlobalScope.async { // creates worker thread
             var res = withContext(Dispatchers.Default) {
@@ -117,6 +112,5 @@ class AlbumNewItemFragment : Fragment() {
         if (activity !=null && activity is BaseActivity) {
             (activity as BaseActivity).activityBack()
         }
-
     }
 }

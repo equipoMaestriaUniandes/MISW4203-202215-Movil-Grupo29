@@ -1,22 +1,14 @@
 package com.example.misw4203_202215_movil_grupo29.ui
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MotionEventCompat
 import androidx.navigation.findNavController
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.ActivityBaseBinding
 
 
 class BaseActivity : AppCompatActivity() {
-    //private var startX = 0f
-    //private var isScrollingRight = false
-    //private var isScrollingLeft = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,35 +60,7 @@ class BaseActivity : AppCompatActivity() {
             activityBack()
         }
 
-
     }
-    /*override fun onTouchEvent(event: MotionEvent): Boolean {
-        val action: Int = MotionEventCompat.getActionMasked(event)
-        return when (action) {
-            MotionEvent.ACTION_MOVE -> {
-                isScrollingRight = event.x > startX
-                isScrollingLeft = event.x < startX
-                Log.d("GESTOS", "Action was MOVE")
-                if(isScrollingLeft){
-                    Log.d("GESTOS", "LEFT")
-                }else if(isScrollingRight){
-                    Log.d("GESTOS", "RIGHT")
-                }
-                true
-            }
-            MotionEvent.ACTION_UP -> {
-                startX = 0f
-                Log.d("GESTOS", "Action was UP")
-                true
-            }
-            MotionEvent.ACTION_DOWN -> {
-                startX = event.x
-                Log.d("GESTOS", "Action was DOWN con posicion: $startX")
-                true
-            }
-            else -> super.onTouchEvent(event)
-        }
-    }*/
 
     fun inActiveBtn(){
         findViewById<View>(R.id.btn_albumes).isClickable = false
