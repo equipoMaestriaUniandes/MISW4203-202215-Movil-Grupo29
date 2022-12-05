@@ -1,6 +1,5 @@
 package com.example.misw4203_202215_movil_grupo29.ui
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -10,29 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.AlbumItemFragmentBinding
 import com.example.misw4203_202215_movil_grupo29.models.Album
-import com.example.misw4203_202215_movil_grupo29.models.Track
-import com.example.misw4203_202215_movil_grupo29.ui.adapters.AlbumListAdapter
-import com.example.misw4203_202215_movil_grupo29.viewmodels.AlbumViewModel
 import com.example.misw4203_202215_movil_grupo29.viewmodels.TrackViewModel
-import org.json.JSONObject
-import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
-
-//private const val ARG_PARAM1 = "param1"
 
 class AlbumItemFragment : Fragment() {
     private var albumObj: Album? = null
@@ -87,9 +77,6 @@ class AlbumItemFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val intent = Intent(binding.root.context, AlbumItemFragment::class.java)
-
-       // val albumItem = intent.getParcelableExtra<Album>(ALBUM_OBJ_BUNDLE) as Album
         Glide.with(this)
             .load(albumObj?.cover?.toUri()?.buildUpon()?.scheme("https")?.build())
             .apply(

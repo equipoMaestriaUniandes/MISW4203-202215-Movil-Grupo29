@@ -3,6 +3,7 @@ package com.example.misw4203_202215_movil_grupo29.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -10,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.ArtistListItemBinding
 import com.example.misw4203_202215_movil_grupo29.models.Musicians
+import com.example.misw4203_202215_movil_grupo29.ui.ArtistListFragmentDirections
 
 class MusicianListAdapter(): RecyclerView.Adapter<MusicianListAdapter.ViewHolder>() {
 
@@ -30,9 +32,11 @@ class MusicianListAdapter(): RecyclerView.Adapter<MusicianListAdapter.ViewHolder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //Actualiza la vista
-
         holder.bind(musicians[position])
+        holder.binding.root.setOnClickListener {
+            val action = ArtistListFragmentDirections.actionArtistListFragmentToArtistItemFragment(null,musicians[position])
+            holder.binding.root.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,7 +44,7 @@ class MusicianListAdapter(): RecyclerView.Adapter<MusicianListAdapter.ViewHolder
         return musicians.size
     }
 
-    class ViewHolder(private val binding: ArtistListItemBinding):RecyclerView.ViewHolder(binding.root){
+    class ViewHolder(val binding: ArtistListItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(musician: Musicians){
             binding.artistTitle.text = musician.name
             Glide

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_albumListFragment_to_albumItemFragment"
             app:destination="@id/albumItemFragment" />
+        <action
+            android:id="@+id/action_albumListFragment_to_albumNewItemFragment"
+            app:destination="@id/albumNewItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistListFragment"
@@ -31,6 +34,9 @@
         <action
             android:id="@+id/action_artistListFragment_to_collectorListFragment"
             app:destination="@id/collectorListFragment" />
+        <action
+            android:id="@+id/action_artistListFragment_to_artistItemFragment"
+            app:destination="@id/artistItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/collectorListFragment"
@@ -43,6 +49,9 @@
         <action
             android:id="@+id/action_collectorListFragment_to_artistListFragment"
             app:destination="@id/artistListFragment" />
+        <action
+            android:id="@+id/action_collectorListFragment_to_collectorItemFragment"
+            app:destination="@id/collectorItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumItemFragment"
@@ -66,5 +75,34 @@
         <action
             android:id="@+id/action_trackFragment_to_albumItemFragment"
             app:destination="@id/albumItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.CollectorItemFragment"
+        android:label="collector_item_fragment"
+        tools:layout="@layout/collector_item_fragment" >
+        <argument
+            android:name="collectorObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Collector" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.ArtistItemFragment"
+        android:label="artist_item_fragment"
+        tools:layout="@layout/artist_item_fragment" >
+        <argument
+            android:name="bandObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Band"
+            app:nullable="true"/>
+        <argument
+            android:name="musicianObj"
+            app:argType="com.example.misw4203_202215_movil_grupo29.models.Musicians"
+            app:nullable="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/albumNewItemFragment"
+        android:name="com.example.misw4203_202215_movil_grupo29.ui.AlbumNewItemFragment"
+        android:label="album_new_item_fragment"
+        tools:layout="@layout/album_new_item_fragment" >
     </fragment>
 </navigation>

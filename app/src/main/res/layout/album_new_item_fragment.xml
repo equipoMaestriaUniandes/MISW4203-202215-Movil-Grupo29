@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO: Update blank fragment layout -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".ui.AlbumNewItemFragment">
+
+    <TextView
+        android:id="@+id/lbl_album_new_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/album_new_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/lbl_album_new_item_record_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Record Label"
+        android:layout_marginTop="10dp"/>
+    <Spinner
+        android:id="@+id/album_new_item_record_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/lbl_album_new_item_release_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Release Date"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/album_new_item_release_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date" />
+    <TextView
+        android:id="@+id/lbl_album_new_item_genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Genre"
+        android:layout_marginTop="10dp"/>
+    <Spinner
+        android:id="@+id/album_new_item_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/lbl_album_new_item_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/album_new_item_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btn_album_new_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F7D384"
+        android:backgroundTint="#F7D384"
+        android:text="Add Album"
+        android:textColor="#000000"/>
+
+</LinearLayout>
