@@ -12,20 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:background="#bdbab6"
         android:clipToPadding="false"
         android:padding="0dp"
         android:paddingStart="0dp"
         android:paddingRight="30dp"
         android:paddingBottom="30dp"
-        tools:ignore="MissingConstraints"
+        app:cardBackgroundColor="#bdbab6"
         app:cardUseCompatPadding="false"
-        android:background="#bdbab6"
-        app:cardBackgroundColor="#bdbab6">
+        tools:ignore="MissingConstraints">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -41,20 +42,20 @@
                     android:scaleType="centerCrop"
                     app:srcCompat="@mipmap/ic_launcher"
                     tools:ignore="MissingConstraints" />
+
                 <TextView
                     android:id="@+id/album_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="9pt"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    tools:text="Title"
-                    />
+                    android:textSize="9pt"
+                    android:textStyle="bold"
+                    tools:text="Title" />
 
                 <TextView
                     android:id="@+id/album_release_date"
@@ -62,41 +63,73 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="10dp"
-                    android:textSize="7pt"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
+                    android:textSize="7pt"
                     tools:text="ReleaseDate" />
+
                 <TextView
                     android:id="@+id/album_genre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="10dp"
-                    android:textSize="7pt"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
+                    android:textSize="7pt"
                     tools:text="Genre" />
+
                 <TextView
                     android:id="@+id/album_record_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="10dp"
-                    android:textSize="7pt"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
+                    android:textSize="7pt"
                     tools:text="RecordLabel" />
+
                 <TextView
                     android:id="@+id/album_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingLeft="10dp"
-                    android:textSize="7pt"
                     android:justificationMode="inter_word"
+                    android:paddingLeft="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
+                    android:textSize="7pt"
                     tools:text="Description" />
+
+                <LinearLayout
+                    android:id="@+id/dropdownPanel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/trackDropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:contentDescription="dropdown"
+                        android:minHeight="48dp"
+                        android:spinnerMode="dropdown" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/addTrack_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="2"
+                        android:autoText="false"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
