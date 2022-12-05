@@ -41,6 +41,7 @@
                     android:layout_gravity="center"
                     android:scaleType="centerCrop"
                     app:srcCompat="@mipmap/ic_launcher"
+                    android:contentDescription="Imagen de carátula de Disco"
                     tools:ignore="MissingConstraints" />
 
                 <TextView
