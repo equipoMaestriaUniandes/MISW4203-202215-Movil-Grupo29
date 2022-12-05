@@ -38,7 +38,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
+                    list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), ))
                 }
                 cont.resume(list)
             },
@@ -113,6 +113,22 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun getTracks(albumId:Int,onComplete:(resp:List<Track>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId/tracks",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Track>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Track(trackId = item.getInt("id"),name = item.getString("name"), duration = item.getString("duration")))
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
 
 
     fun postComment(body: JSONObject, albumId: Int,  onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){
@@ -125,6 +141,32 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
+
+    suspend fun createTrack(body: JSONObject, albumId:Int) = suspendCoroutine<Track>{ cont->
+        requestQueue.add(postRequest("albums/$albumId/tracks", body,
+            { response ->
+                val track=Track(trackId = response.getInt("id"),name = response.getString("name"), duration = response.getString("duration"))
+                cont.resume(track)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
+    }
+
+    suspend fun createAlbum(body: JSONObject) = suspendCoroutine<Album>{ cont->
+        requestQueue.add(postRequest("albums", body,
+            { response ->
+                Log.d("Crear Album", "Album Creado")
+                val album=Album(albumId = response.getInt("id"),name = response.getString("name"), cover = response.getString("cover"), recordLabel = response.getString("recordLabel"), releaseDate = response.getString("releaseDate"), genre = response.getString("genre"), description = response.getString("description"))
+                cont.resume(album)
+            },
+            {
+                Log.d("Crear Album", "ERROR")
+                cont.resumeWithException(it)
+            }))
+    }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }

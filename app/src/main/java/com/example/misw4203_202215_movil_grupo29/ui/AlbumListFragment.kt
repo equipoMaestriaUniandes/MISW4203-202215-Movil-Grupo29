@@ -1,13 +1,14 @@
 package com.example.misw4203_202215_movil_grupo29.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.misw4203_202215_movil_grupo29.R
 import com.example.misw4203_202215_movil_grupo29.databinding.AlbumListFragmentBinding
 import com.example.misw4203_202215_movil_grupo29.models.Album
@@ -29,13 +30,14 @@ class AlbumListFragment : Fragment() {
     ): View? {
         _binding = AlbumListFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
+        binding.btnAlbumNewShow.setOnClickListener{
+            val action = AlbumListFragmentDirections.actionAlbumListFragmentToAlbumNewItemFragment()
+            binding.root.findNavController().navigate(action)
+        }
 
         viewModelAdapter = AlbumListAdapter()
-
         return view
     }
-
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
