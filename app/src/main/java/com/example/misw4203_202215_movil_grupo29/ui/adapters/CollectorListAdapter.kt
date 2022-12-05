@@ -32,14 +32,11 @@ class CollectorListAdapter (): RecyclerView.Adapter<CollectorListAdapter.ViewHol
         holder.bind(collectors[position])
 
         holder.binding.root.setOnClickListener {
-            val action = CollectorListFragmentDirections.actionCollectorListFragmentToCollectorItemFragment(collectors[position])
-            // Navigate using that action
-            holder.binding.root.findNavController().navigate(action)
+            holder.binding.root.findNavController().navigate(CollectorListFragmentDirections.actionCollectorListFragmentToCollectorItemFragment(collectors[position]))
         }
     }
 
     override fun getItemCount(): Int {
-        //DEvuelve el numero de elementos del adapter
         return collectors.size
     }
 
@@ -49,6 +46,5 @@ class CollectorListAdapter (): RecyclerView.Adapter<CollectorListAdapter.ViewHol
             binding.telefono.text = "Telefono: ${collector.telephone}"
             binding.email.text = "Email: ${collector.email}"
         }
-
     }
 }

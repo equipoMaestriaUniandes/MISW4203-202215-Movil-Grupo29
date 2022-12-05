@@ -1,7 +1,6 @@
 package com.example.misw4203_202215_movil_grupo29.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +15,6 @@ import com.example.misw4203_202215_movil_grupo29.models.Track
 import com.example.misw4203_202215_movil_grupo29.viewmodels.TrackViewModel
 import org.json.JSONObject
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 
 class TrackFragment : Fragment() {
     private var albumObj: Album? = null
@@ -43,8 +39,6 @@ class TrackFragment : Fragment() {
             val action = TrackFragmentDirections.actionTrackFragmentToAlbumItemFragment(albumObj!!)
             binding.root.findNavController().navigate(action)
         }
-
-
         return binding.root
     }
 
