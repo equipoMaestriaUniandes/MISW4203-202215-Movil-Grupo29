@@ -64,6 +64,11 @@ class BaseActivity : AppCompatActivity() {
             binding.pageTitle.text = "Collector"
         }
 
+        binding.btnBack.setOnClickListener {
+            activityBack()
+        }
+
+
     }
     /*override fun onTouchEvent(event: MotionEvent): Boolean {
         val action: Int = MotionEventCompat.getActionMasked(event)
@@ -103,5 +108,9 @@ class BaseActivity : AppCompatActivity() {
         findViewById<View>(R.id.btn_albumes).isClickable = true
         findViewById<View>(R.id.btn_artistas).isClickable = true
         findViewById<View>(R.id.btn_coleccionistas).isClickable = true
+    }
+
+    fun activityBack(){
+        this.onBackPressed();
     }
 }

@@ -99,6 +99,6 @@
                     tools:text="Description" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>

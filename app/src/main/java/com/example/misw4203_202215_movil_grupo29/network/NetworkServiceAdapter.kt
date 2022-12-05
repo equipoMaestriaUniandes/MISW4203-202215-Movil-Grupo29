@@ -125,6 +125,20 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
+    suspend fun createAlbum(body: JSONObject) = suspendCoroutine<Album>{ cont->
+        requestQueue.add(postRequest("albums", body,
+            { response ->
+                Log.d("Crear Album", "Album Creado")
+                val album=Album(albumId = response.getInt("id"),name = response.getString("name"), cover = response.getString("cover"), recordLabel = response.getString("recordLabel"), releaseDate = response.getString("releaseDate"), genre = response.getString("genre"), description = response.getString("description"))
+                cont.resume(album)
+            },
+            {
+                Log.d("Crear Album", "ERROR")
+                cont.resumeWithException(it)
+            }))
+    }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }

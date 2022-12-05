@@ -9,6 +9,7 @@ import com.example.misw4203_202215_movil_grupo29.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
@@ -16,8 +17,13 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
 
     private val _albums = MutableLiveData<List<Album>>()
 
+    private val _album = MutableLiveData<Album>()
+
     val albums: LiveData<List<Album>>
         get() = _albums
+
+    val album: LiveData<Album>
+        get() = _album
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -47,6 +53,26 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         catch (e:Exception){
             _eventNetworkError.value = true
         }
+    }
+
+   suspend fun createDataFromNetwork(album: JSONObject):Int {
+        var id:Int=0
+        try {
+            viewModelScope.launch (Dispatchers.Default){
+                withContext(Dispatchers.IO){
+                    var data = albumsRepository.createData(album)
+                    _album.postValue(data)
+                    id=data.albumId
+                    refreshDataFromNetwork()
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){
+            _eventNetworkError.value = true
+        }
+        return id
     }
 
     fun onNetworkErrorShown() {
